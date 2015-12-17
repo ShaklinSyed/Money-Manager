@@ -1,11 +1,6 @@
 document.addEventListener("DOMContentLoaded",function(){
-    var populate = function(arr,ch){
-        if(ch == 'e'){
+    var populate = function(arr){
             var tble = document.getElementById("expense");
-        }
-        else{
-            var tble = document.getElementById("income");
-        }
             for(i in arr){
                 var tr = document.createElement("tr");
                 var td1 = document.createElement("td");
@@ -23,20 +18,10 @@ document.addEventListener("DOMContentLoaded",function(){
 
 //Checks if income and expense are there in local storage
     if(typeof(Storage) != undefined){
-        if(localStorage.getItem("income")){
-            var temp = localStorage.getItem("income");
-            var income = JSON.parse(temp);
-            populate(income,'i');
-        }
-    //else sets income to empty string
-        else{
-            localStorage.setItem("income","[]");
-        }
-
         if(localStorage.getItem("expense")){
             var temp = localStorage.getItem("expense");
             var expense = JSON.parse(temp);
-            populate(expense,'e');
+            populate(expense);
         }
         else{
             localStorage.setItem("expense","[]");
